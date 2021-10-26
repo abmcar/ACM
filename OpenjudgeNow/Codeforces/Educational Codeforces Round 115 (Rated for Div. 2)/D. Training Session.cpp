@@ -36,33 +36,28 @@ const ll Maxn = 1e7 + 10;
 const ll Mod = 1e9 + 7;
 
 ll t, n;
+ll oriA[Maxn], oriB[Maxn];
+map<ll, ll> numA, numB;
+ll ans;
 
 void work()
 {
+    ans = 0;
+    numA.clear();
+    numB.clear();
     cin >> n;
-    vector<long double> nowV;
-    unordered_map<long double, ll> M;
-    long double nowTot = 0;
-    long double avg;
-    ll ans = 0;
     for (ll i = 1; i <= n; i++)
     {
-        ll temp;
-        cin >> temp;
-        nowV.push_back(temp);
-        nowTot += temp;
+        cin >> oriA[i] >> oriB[i];
+        numA[oriA[i]]++;
+        numB[oriB[i]]++;
     }
-    avg = nowTot / n;
-    for (ll i = 0; i < n; i++)
-        M[nowV[i]]++;
-    for (auto it : nowV)
-    {
-        ans += M[2*avg-it];
-        if (it == 2*avg-it)
-            ans--;
-        // cout << it << " " <<M[(it-avg)*-1] << " " << ans << endl;
-    }
-    cout << ans / 2 << endl;
+    ans = n * (n - 1) * (n - 2) / 6;
+    for (int i = 1; i <= n; i++)
+        ans = ans - (numA[oriA[i]] - 1) * (numB[oriB[i]] - 1);
+    // for (auto it : numB)
+    // ans += it.second * ((totB-it.second)*totB - (totB2-it.second*it.second)*it.second - (totB-it.second)*it.second);
+    cout << ans << endl;
 }
 
 signed main()
@@ -77,4 +72,3 @@ signed main()
         work();
     return 0;
 }
-// 2*avg - it 

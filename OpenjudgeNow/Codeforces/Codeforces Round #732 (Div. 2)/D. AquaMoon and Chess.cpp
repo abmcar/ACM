@@ -27,7 +27,7 @@ const int Maxn = 1e5 + 10;
 const ll Mod = 998244353;
 
 int t, n;
-int f[Maxn], rF[Maxn];
+ll f[Maxn], rF[Maxn];
 string oriS;
 
 ll quickPow(ll base, ll x)
@@ -40,11 +40,15 @@ ll quickPow(ll base, ll x)
         base = base * base % Mod;
         x = x / 2;
     }
+    return now % Mod;
 }
 
 ll inverse(ll num)
 {
-    return quickPow(num, Mod-2);
+    return quickPow(num, Mod-2) % Mod;
+    // if (num == 1)
+    //     return num;
+    // return inverse(Mod % num) * (Mod - Mod / num) % Mod;
 }
 
 void init()
@@ -52,8 +56,8 @@ void init()
     f[0] = rF[0] = 1;
     for (int i = 1; i <= 1e5; i++)
     {
-        f[i] = f[i-1] * i % Mod;
-        rF[i] = rF[i-1] * inverse(i) % Mod;
+        f[i] = f[i - 1] * i % Mod;
+        rF[i] = inverse(f[i]) % Mod;
     }
 }
 
@@ -63,21 +67,22 @@ void work()
     cin >> oriS;
     int t1, t2, t3;
     t1 = t2 = t3 = 0;
-    for (int i = 1; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         if (oriS[i] == '0')
             t2++;
-        else
-        if (i + 1 < n && oriS[i+1] == '1')
+        else if (i + 1 < n && oriS[i + 1] == '1')
             t1++, i++;
         else
-            t2++;
+            t3++;
     }
-    cout << f[t1 + t2] * (rF[t1] % Mod) * (rF[t2]% Mod) << endl;
+    // cout << t1 << " " << t2 << " " << t3 << endl;
+    cout << ((f[t1 + t2] * (rF[t1] % Mod)%Mod) * (rF[t2] % Mod)) % Mod << endl;
 }
 
 int main()
 {
+    // cout << 2048*inverse(1024)%Mod << endl;
     Buff;
 #ifdef Debug
     freopen("temp.in", "r", stdin);
