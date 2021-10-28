@@ -15,7 +15,7 @@
 #include <climits>
 #include <unordered_map>
 #include <unordered_set>
-#include <ext/pb_ds/priority_queue.hpp>               
+#include <ext/pb_ds/priority_queue.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 // #include <bits/extc++.h>
@@ -43,4 +43,4 @@ signed main()
     freopen("temp.out", "w", stdout);
 #endif
     return 0;
-}                              
+}
