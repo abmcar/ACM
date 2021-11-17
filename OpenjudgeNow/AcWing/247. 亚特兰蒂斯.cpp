@@ -1,39 +1,12 @@
+#include <cstdio>
+#include <cstring>
 #include <iostream>
-#include <map>
-#include <set>
-#include <queue>
-#include <stack>
 #include <algorithm>
 #include <vector>
-#include <string>
-#include <iomanip>
-#include <cmath>
-#include <ctime>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <climits>
-#include <unordered_map>
-#include <unordered_set>
-#include <ext/pb_ds/priority_queue.hpp>
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-// #include <bits/extc++.h>
-// #include <bits/stdc++.h>
-#define Buff std::ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
-#define ll long long
-#define inf LONG_LONG_MAX
-#define Inf INT_MAX
-#define endl "\n"
-#define Endl "\n"
-#define String string
-// #define Debug
 
 using namespace std;
-// using namespace __gnu_pbds;
 
-const int Maxn = 1e7 + 10;
-const ll Mod = 1e9 + 7;
+const int N = 100010;
 
 int n;
 struct Segment
@@ -44,13 +17,13 @@ struct Segment
     {
         return x < t.x;
     }
-} seg[Maxn * 2];
+} seg[N * 2];
 struct Node
 {
     int l, r;
     int cnt;
     double len;
-} tr[Maxn * 8];
+} tr[N * 8];
 
 vector<double> ys;
 
@@ -83,6 +56,7 @@ void build(int u, int l, int r)
 
 void modify(int u, int l, int r, int k)
 {
+    cout << "modify " << u << " " << l << " " << r << " " << k << endl;
     if (tr[u].l >= l && tr[u].r <= r)
     {
         tr[u].cnt += k;
@@ -99,13 +73,8 @@ void modify(int u, int l, int r, int k)
     }
 }
 
-signed main()
+int main()
 {
-    Buff;
-#ifdef Debug
-    freopen("temp.in", "r", stdin);
-    freopen("temp.out", "w", stdout);
-#endif
     int T = 1;
     while (scanf("%d", &n), n)
     {
@@ -131,11 +100,13 @@ signed main()
         {
             if (i > 0)
                 res += tr[1].len * (seg[i].x - seg[i - 1].x);
+            cout << i << " " << res << endl;
             modify(1, find(seg[i].y1), find(seg[i].y2) - 1, seg[i].k);
         }
 
         printf("Test case #%d\n", T++);
         printf("Total explored area: %.2lf\n\n", res);
     }
+
     return 0;
 }

@@ -1,5 +1,0 @@
-C:/Users/11146/OneDrive/ACM/temp/cmake-build-debug/CMakeFiles/temp.dir
-C:/Users/11146/OneDrive/ACM/temp/cmake-build-debug/CMakeFiles/Untitled-1.dir
-C:/Users/11146/OneDrive/ACM/temp/cmake-build-debug/CMakeFiles/makeDataGen.dir
-C:/Users/11146/OneDrive/ACM/temp/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/11146/OneDrive/ACM/temp/cmake-build-debug/CMakeFiles/rebuild_cache.dir

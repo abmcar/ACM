@@ -10,27 +10,10 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "D:/MinGW/bin/cpp.exe",
+            "compilerPath": "D:\\MinGW\\bin\\gcc.exe",
             "cStandard": "gnu17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x86",
-            "compilerArgs": []
-        },
-        {
-            "name": "Win64",
-            "includePath": [
-                "${workspaceFolder}/**"
-            ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "windowsSdkVersion": "10.0.19041.0",
-            "compilerPath": "C:/MinGW/bin/g++.exe",
-            "cStandard": "c17",
-            "cppStandard": "c++20",
-            "intelliSenseMode": "linux-gcc-x64"
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "windows-gcc-x86"
         }
     ],
     "version": 4
