@@ -1,5 +1,4 @@
 #include "bits/stdc++.h"
-#include <bits/extc++.h>
 
 #define Buff std::ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 #define ll long long
@@ -11,7 +10,6 @@
 // #define Debug
 
 using namespace std;
-using namespace __gnu_pbds;
 
 const int Maxn = 1e7 + 10;
 const ll Mod = 1e9 + 7;

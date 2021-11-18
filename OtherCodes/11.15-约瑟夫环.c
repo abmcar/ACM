@@ -1,13 +1,11 @@
-#include <bits/stdc++.h>
-
-using namespace std;
+#include <stdio.h>
 
 struct Node
 {
     struct Node *next;
     int val;
 } * strNode;
-int arr[100], arrSize, n, m;
+int array[100], arrSize, n, m;
 
 void insert(int num, struct Node *strNode)
 {
@@ -24,21 +22,6 @@ void insert(int num, struct Node *strNode)
     newNode->next = NULL;
 }
 
-void print(int x)
-{
-    string temp = "";
-    while (x)
-    {
-        if (x % 2)
-            temp = temp + '1';
-        else
-            temp = temp + '0';
-        x = x / 2;
-    }
-    reverse(temp.begin(),temp.end());
-    cout << temp;
-}
-
 int solve()
 {
     struct Node *nowNode = strNode;
@@ -53,10 +36,7 @@ int solve()
         cnt++;
         if (cnt >= m-1)
         {
-            cout << nowNode->next->val << " ";
-            print(nowNode->next->val);
-            cout << endl;
-//            printf("%d out\n",nowNode->next->val);
+            printf("%d out\n",nowNode->next->val);
             nowNode->next = nowNode->next->next;
             cnt = 0;
             nowOut++;
@@ -74,9 +54,9 @@ int main()
     strNode->next = NULL;
     arrSize = n;
     for (int i = 0; i < n; i++)
-        arr[i] = i+1;
-    strNode->val = arr[0];
+        array[i] = i+1;
+    strNode->val = array[0];
     for (int i = 1; i < arrSize; i++)
-        insert(arr[i], strNode);
+        insert(array[i], strNode);
     printf("%d",solve());
 }

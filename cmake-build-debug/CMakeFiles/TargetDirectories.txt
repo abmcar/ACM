@@ -1,0 +1,4 @@
+C:/Users/Abmcar/OneDrive/ACM/cmake-build-debug/CMakeFiles/template.dir
+C:/Users/Abmcar/OneDrive/ACM/cmake-build-debug/CMakeFiles/temp.dir
+C:/Users/Abmcar/OneDrive/ACM/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Abmcar/OneDrive/ACM/cmake-build-debug/CMakeFiles/rebuild_cache.dir
