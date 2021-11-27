@@ -10,13 +10,14 @@ int main()
 {
     // freopen("1.txt", "w", stdout);
     srand(time(0));
-    int t = rand() % 1234;
-    cout << t << endl;
-    while (t--)
+    cout << 1 << endl;
+    for (int i = 1; i <= 1; i++)
     {
-        int a = rand() % (int)1e9;
-        int b = rand() % (int)1e9;
-        cout << a << " " << b << endl;
+        int n = rand() % 200000 + 1;
+        cout << n << endl;
+        for (int j = 1; j <= n; j++)
+            cout << rand() % 1000000 << " ";
+        cout << endl;
     }
     return 0;
 }

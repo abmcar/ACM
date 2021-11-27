@@ -14,11 +14,11 @@ using namespace std;
 const int Maxn = 1e7 + 10;
 const ll Mod = 1e9 + 7;
 
-signed main() {
+signed main()
+{
     Buff;
 #ifdef Debug
     freopen("temp.in", "r", stdin);
     freopen("temp.out", "w", stdout);
 #endif
-
 }

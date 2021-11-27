@@ -1,82 +1,68 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-using namespace std;
-
-struct Node
+struct GLNode
 {
-    struct Node *next;
-    int val;
-} * strNode;
-int arr[100], arrSize, n, m;
-
-void insert(int num, struct Node *strNode)
-{
-    struct Node *nowNode = strNode;
-    struct Node *nextNode = strNode->next;
-    while (nextNode != NULL)
+    int tag;
+    union
     {
-        nowNode = nextNode;
-        nextNode = nowNode->next;
+        char data;
+        struct GLNode *sublist;
+    } val;
+    struct GLNode *link;
+};
+
+void CreateGL(struct GLNode **g)
+{
+    char ch;
+    scanf("%c", &ch);
+    if (ch == '#')
+        *g = NULL;
+    else if (ch == '(')
+    {
+        *g = (struct GLNode *)malloc(sizeof(struct GLNode));
+        (*g)->tag = 1;
+        CreateGL(&((*g)->val.sublist));
     }
-    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
-    newNode->val = num;
-    nowNode->next = newNode;
-    newNode->next = NULL;
+    else
+    {
+        *g = (struct GLNode *)malloc(sizeof(struct GLNode));
+        (*g)->tag = 0;
+        (*g)->val.data = ch;
+    }
+    scanf("%c", &ch);
+    if (*g == NULL)
+        ;
+    else if (ch == ',')
+        CreateGL(&((*g)->link));
+    else if ((ch == ')') || (ch == '\n'))
+        (*g)->link = NULL;
 }
 
-void print(int x)
+GLNode *SearchGL(GLNode *&g, char a)
 {
-    string temp = "";
-    while (x)
+    while (g != NULL)
     {
-        if (x % 2)
-            temp = temp + '1';
-        else
-            temp = temp + '0';
-        x = x / 2;
-    }
-    reverse(temp.begin(),temp.end());
-    cout << temp;
-}
-
-int solve()
-{
-    struct Node *nowNode = strNode;
-    while (nowNode->next != NULL)
-        nowNode = nowNode->next;
-    nowNode->next = strNode;
-    nowNode = strNode;
-    int cnt = 0;
-    int nowOut = 0;
-    while (nowNode->next != nowNode)
-    {
-        cnt++;
-        if (cnt >= m-1)
+        if (g->tag == 1)
         {
-            cout << nowNode->next->val << " ";
-            print(nowNode->next->val);
-            cout << endl;
-//            printf("%d out\n",nowNode->next->val);
-            nowNode->next = nowNode->next->next;
-            cnt = 0;
-            nowOut++;
-            if (nowOut == n-1)
-                return nowNode->val;
+            if (SearchGL(g->val.sublist, a))
+                return (g->val.sublist);
         }
-        nowNode = nowNode->next;
+        else
+        {
+            if (g->val.data == a)
+                return g;
+        }
+        g = g->link;
     }
+    return NULL;
 }
 
 int main()
 {
-    scanf("%d%d",&n,&m);
-    strNode = (struct Node *)malloc(sizeof(struct Node));
-    strNode->next = NULL;
-    arrSize = n;
-    for (int i = 0; i < n; i++)
-        arr[i] = i+1;
-    strNode->val = arr[0];
-    for (int i = 1; i < arrSize; i++)
-        insert(arr[i], strNode);
-    printf("%d",solve());
+    char a;
+    struct GLNode *g;
+    CreateGL(&g);
+    char temp = SearchGL(g, a)->val.data;
+    return 0;
 }
