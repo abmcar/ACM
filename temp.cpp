@@ -1,68 +1,25 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "bits/stdc++.h"
 
-struct GLNode
-{
-    int tag;
-    union
-    {
-        char data;
-        struct GLNode *sublist;
-    } val;
-    struct GLNode *link;
-};
+#define Buff std::ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
+#define ll long long
+#define inf LONG_LONG_MAX
+#define Inf INT_MAX
+#define endl "\n"
+#define Endl "\n"
+#define String string
+// #define Debug
 
-void CreateGL(struct GLNode **g)
-{
-    char ch;
-    scanf("%c", &ch);
-    if (ch == '#')
-        *g = NULL;
-    else if (ch == '(')
-    {
-        *g = (struct GLNode *)malloc(sizeof(struct GLNode));
-        (*g)->tag = 1;
-        CreateGL(&((*g)->val.sublist));
-    }
-    else
-    {
-        *g = (struct GLNode *)malloc(sizeof(struct GLNode));
-        (*g)->tag = 0;
-        (*g)->val.data = ch;
-    }
-    scanf("%c", &ch);
-    if (*g == NULL)
-        ;
-    else if (ch == ',')
-        CreateGL(&((*g)->link));
-    else if ((ch == ')') || (ch == '\n'))
-        (*g)->link = NULL;
-}
+using namespace std;
 
-GLNode *SearchGL(GLNode *&g, char a)
-{
-    while (g != NULL)
-    {
-        if (g->tag == 1)
-        {
-            if (SearchGL(g->val.sublist, a))
-                return (g->val.sublist);
-        }
-        else
-        {
-            if (g->val.data == a)
-                return g;
-        }
-        g = g->link;
-    }
-    return NULL;
-}
+const int Maxn = 1e7 + 10;
+const ll Mod = 1e9 + 7;
 
-int main()
+signed main()
 {
-    char a;
-    struct GLNode *g;
-    CreateGL(&g);
-    char temp = SearchGL(g, a)->val.data;
+    Buff;
+#ifdef Debug
+    freopen("temp.in", "r", stdin);
+    freopen("temp.out", "w", stdout);
+#endif
     return 0;
 }

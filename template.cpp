@@ -21,4 +21,5 @@ signed main()
     freopen("temp.in", "r", stdin);
     freopen("temp.out", "w", stdout);
 #endif
+    return 0;
 }

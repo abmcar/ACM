@@ -45,7 +45,7 @@ ll quickPow(ll base, ll x)
 
 ll inverse(ll num)
 {
-    return quickPow(num, Mod-2) % Mod;
+    return quickPow(num, Mod - 2) % Mod;
     // if (num == 1)
     //     return num;
     // return inverse(Mod % num) * (Mod - Mod / num) % Mod;
@@ -77,7 +77,7 @@ void work()
             t3++;
     }
     // cout << t1 << " " << t2 << " " << t3 << endl;
-    cout << ((f[t1 + t2] * (rF[t1] % Mod)%Mod) * (rF[t2] % Mod)) % Mod << endl;
+    cout << ((f[t1 + t2] * (rF[t1] % Mod) % Mod) * (rF[t2] % Mod)) % Mod << endl;
 }
 
 int main()

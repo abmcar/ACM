@@ -76,6 +76,7 @@
         "typeindex": "c",
         "typeinfo": "c",
         "valarray": "c",
-        "variant": "c"
+        "variant": "c",
+        "12.5-栈1.C": "cpp"
     }
 }

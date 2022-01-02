@@ -1,62 +1,62 @@
-#include <iostream>
-#include <algorithm>
-#define Maxn (int)1e6 + 10
+#include "bits/stdc++.h"
+
+#define Buff std::ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
+#define ll long long
+#define inf LONG_LONG_MAX
+#define Inf INT_MAX
+#define endl "\n"
+#define Endl "\n"
+#define String string
+// #define Debug
+
 using namespace std;
 
-int n, m;
-int ans[Maxn];
+const int Maxn = 1e7 + 10;
+const ll Mod = 1e9 + 7;
 
-int lowbit(int k)
+template <typename T>
+class Fenwick
 {
-    return k & -k;
-}
-
-int add(int x, int k)
-{
-    while (x <= n)
+public:
+    vector<T> fenw;
+    int n;
+    Fenwick(int _n) : n(_n)
     {
-        ans[x] += k;
-        x += lowbit(x);
+        fenw.resize(n);
     }
-}
 
-int sum(int x)
-{
-    int nowans = 0;
-    while (x != 0)
+    void modify(int x, T val)
     {
-        nowans += ans[x];
-        x -= lowbit(x);
-    }
-    return nowans;
-}
-
-int main()
-{
-    std::ios::sync_with_stdio(false);
-    cin >> n >> m;
-    for (int i = 1; i <= n; i++)
-    {
-        int temp;
-        cin >> temp;
-        add(i, temp);
-    }
-    for (int i = 1; i <= m; i++)
-    {
-        int type;
-        cin >> type;
-        if (type == 1)
+        while (x < n)
         {
-            int pos, k;
-            cin >> pos >> k;
-            add(pos, k);
-        }
-        if (type == 2)
-        {
-            int l, r;
-            cin >> l >> r;
-            cout << sum(r) - sum(l - 1) << endl;
+            fenw[x] += val;
+            // x += lowbit(x);
+            x |= (x + 1);
         }
     }
+
+    T get(int x)
+    {
+        T nowAns{};
+        while (x >= 0)
+        {
+            nowAns += fenw[x];
+            x = (x & (x + 1)) - 1;
+        }
+        return nowAns;
+    }
+};
+
+signed main()
+{
+    Buff;
+#ifdef Debug
+    freopen("temp.in", "r", stdin);
+    freopen("temp.out", "w", stdout);
+#endif
+    Fenwick<int> fen(10);
+    fen.modify(1,1);
+    fen.modify(2,2);
+    cout << fen.get(2) << endl;
     return 0;
 }

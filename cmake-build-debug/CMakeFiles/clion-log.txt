@@ -1,9 +1,1 @@
-C:\Users\Abmcar\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5457.51\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" C:\Users\Abmcar\OneDrive\ACM
-CMake Error at CMakeLists.txt:8 (add_executable):
-  The target name "11.23-线性表" is reserved or not valid for certain
-  CMake features, such as generator expressions, and may result in undefined
-  behavior.
-
-
--- Configuring incomplete, errors occurred!
-See also "C:/Users/Abmcar/OneDrive/ACM/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+CMakeLists.txt not found in C:\Users\Abmcar\OneDrive\ACM Select CMakeLists.txt
