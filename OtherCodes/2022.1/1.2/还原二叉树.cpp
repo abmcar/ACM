@@ -21,11 +21,5 @@ signed main()
     freopen("temp.in", "r", stdin);
     freopen("temp.out", "w", stdout);
 #endif
-    vector<pair<int,int>> tempV;
-    tempV.push_back({1,2});
-    tempV.push_back({2,3});
-    for_each(tempV.begin(),tempV.end(),[](pair<int,int> x){
-        cout << x.first << endl;
-    });
     return 0;
 }
