@@ -19,17 +19,11 @@ int t, n;
 struct Node
 {
     int pos, val;
+    bool operator<(Node b)
+    {
+        return val < b.val;
+    }
 };
-
-bool cmp1(Node a, Node b)
-{
-    return a.val < b.val;
-}
-
-bool cmp2(Node a, Node b)
-{
-    return a.val > b.val;
-}
 
 void work()
 {
@@ -46,8 +40,8 @@ void work()
         else
             like.push_back({i + 1, rat[i + 1]});
     vector<int> ans(n + 1);
-    sort(dislike.begin(), dislike.end(),cmp1);
-    sort(like.begin(), like.end(),cmp1);
+    sort(dislike.begin(), dislike.end());
+    sort(like.begin(), like.end());
     for (int i = 0; i < dislike.size(); i++)
         ans[dislike[i].pos] = i + 1;
     for (int i = 0; i < like.size(); i++)
