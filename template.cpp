@@ -1,23 +1,5 @@
-#include <iostream>
-#include <map>
-#include <set>
-#include <queue>
-#include <stack>
-#include <algorithm>
-#include <vector>
-#include <string>
-#include <iomanip>
-#include <cmath>
-#include <ctime>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <climits>
-#include <unordered_map>
-#include <unordered_set>
-// #include <ext/pb_ds/priority_queue.h>
-// #include <bits/extc++.h>
-// #include <bits/stdc++.h>
+#include "bits/stdc++.h"
+
 #define Buff std::ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
 #define ll long long
 #define inf LONG_LONG_MAX
