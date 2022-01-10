@@ -128,10 +128,46 @@ void init()
     for (int i = 0; i < oriString.size() - 5; i++)
     {
         string nowString = oriString.substr(i, 4);
-        // if (nowString.find(",") != string::npos)
-        //     continue;
-        // if (nowString.find(":") != string::npos)
-        //     continue;
+        if (nowString.find("¡£") != string::npos)
+            continue;
+        if (nowString.find("£¬") != string::npos)
+            continue;
+        if (nowString.find("«Ì") != string::npos)
+            continue;
+        if (nowString.find("¡±") != string::npos)
+            continue;
+        if (nowString.find("¡°") != string::npos)
+            continue;
+        if (nowString.find("©Ì") != string::npos)
+            continue;
+        if (nowString.find("ÒÒ") != string::npos)
+            continue;
+        if (nowString.find("£¿") != string::npos)
+            continue;
+        if (nowString.find("¬À") != string::npos)
+            continue;
+        if (nowString.find("¢×") != string::npos)
+            continue;
+        if (nowString.find("¡½") != string::npos)
+            continue;
+        if (nowString.find("£Î") != string::npos)
+            continue;
+        if (nowString.find("ªµ") != string::npos)
+            continue;
+        if (nowString.find("¡¤") != string::npos)
+            continue;
+        if (nowString.find("¤À") != string::npos)
+            continue;
+        if (nowString.find("¼º") != string::npos)
+            continue;
+        if (nowString.find("øÇ") != string::npos)
+            continue;
+        if (nowString.find("£À") != string::npos)
+            continue;
+        if (nowString.find("¬Ò") != string::npos)
+            continue;
+        if (nowString.find("¬Ë") != string::npos)
+            continue;
         // if (nowString.find(",") != string::npos)
         //     continue;
         if (M[nowString] == 0)

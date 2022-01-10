@@ -32,16 +32,6 @@ void work()
         return;
     }
     x--;
-    // vector<int> ans;
-    // while (x)
-    // {
-    //     int nowNum = x % k;
-    //     if (k == 1)
-    //         nowNum = x, x = 0;
-    //     ans.push_back(nowNum);
-    //     cout << x << " " << k << " " << nowNum << endl;
-    //     x = x / k;
-    // }
     string ansS = "";
     reverse(oriS.begin(), oriS.end());
     int cnt = 0;
@@ -59,8 +49,6 @@ void work()
                 for (int i = 1; i <= nowNum; i++)
                     ansS += "b";
                 cnt = 0;
-                // cout << x << " " << nowValue << endl;
-                // x = x / nowLen;
             }
             ansS += it;
         }
