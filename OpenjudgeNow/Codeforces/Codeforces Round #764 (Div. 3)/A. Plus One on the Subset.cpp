@@ -7,9 +7,6 @@
 #define endl "\n"
 #define Endl "\n"
 #define String string
-#define tALL(v) v.begin(), v.end()
-#define _for(i, n) for (int i = 0; i < n; i++)
-#define _rof(i, n) for (int i = n; i >= 1; i--)
 // #define Debug
 
 using namespace std;
@@ -18,6 +15,23 @@ using namespace std;
 const int Maxn = 1e7 + 10;
 const ll Mod = 1e9 + 7;
 
+int t, n, m;
+
+void work()
+{
+    cin >> n;
+    int maxn = 0;
+    int minn = 2e9;
+    for (int i = 0; i < n; i++)
+    {
+        int temp;
+        cin >> temp;
+        maxn = max(maxn,temp);
+        minn = min(minn,temp);
+    }
+    cout << maxn-minn << endl;
+}
+
 signed main()
 {
     Buff;
@@ -25,5 +39,8 @@ signed main()
     freopen("temp.in", "r", stdin);
     freopen("temp.out", "w", stdout);
 #endif
+    cin >> t;
+    while (t--)
+        work();
     return 0;
 }
