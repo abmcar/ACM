@@ -1,11 +1,9 @@
-#include <bits/stdc++.h>
-
-using namespace std;
+typedef int DataType;
 
 typedef struct Node
 {
     struct Node *next;
-    int val;
+    DataType val;
 } ListNode;
 ListNode *strNode;
 
@@ -28,19 +26,18 @@ bool EmptyList(ListNode *L)
     return false;
 }
 
-int LengthList(ListNode L)
+int LengthList(ListNode *L)
 {
     int cnt = 0;
-    ListNode *nowNode = &L;
-    while (nowNode->next != NULL)
+    while (L->next != NULL)
     {
         cnt++;
-        nowNode = nowNode->next;
+        L = L->next;
     }
     return cnt;
 }
 
-int GetList(ListNode *L, int i)
+DataType GetList(ListNode *L, int i)
 {
 
     ListNode *p;
@@ -52,12 +49,12 @@ int GetList(ListNode *L, int i)
         j++;
     }
     if (p == NULL)
-        return NULL;
+        return -1;
     else
         return p->val;
 }
 
-void insertNum(int num, int pos, ListNode *strNode)
+void insertNum(DataType num, int pos, ListNode *strNode)
 {
     struct Node *nowNode = strNode;
     struct Node *nextNode = strNode->next;
@@ -109,15 +106,15 @@ void DeleteNum(int pos, struct Node *strNode)
 void MergeList(ListNode *&la, ListNode *&lb, ListNode *&lc)
 {
     InitList(lc);
-    int lenA = LengthList(*la);
-    int lenB = LengthList(*lb);
+    int lenA = LengthList(la);
+    int lenB = LengthList(lb);
     int cntA = 1;
     int cntB = 1;
     int cntC = 1;
-    while (cntA < lenA && cntB < lenB)
+    while (cntA <= lenA && cntB <= lenB)
     {
-        int nowA = GetList(la, cntA);
-        int nowB = GetList(lb, cntB);
+        DataType nowA = GetList(la, cntA);
+        DataType nowB = GetList(lb, cntB);
         if (nowA > nowB)
         {
             insertNum(nowB, cntC++, lc);
@@ -129,44 +126,8 @@ void MergeList(ListNode *&la, ListNode *&lb, ListNode *&lc)
             cntA++;
         }
     }
-    while (cntA < lenA)
+    while (cntA <= lenA)
         insertNum(GetList(la, cntA++), cntC++, lc);
-    while (cntB < lenB)
+    while (cntB <= lenB)
         insertNum(GetList(lb, cntB++), cntC++, lc);
 }
-
-int n, m;
-
-int main()
-{
-    InitList(strNode);
-    insertNum(1, 1, strNode);
-    insertNum(2, 2, strNode);
-    insertNum(3, 3, strNode);
-    insertNum(4, 4, strNode);
-    ListNode *s1, *s2;
-    InitList(s1);
-    insertNum(0, 1, s1);
-    insertNum(1, 2, s1);
-    insertNum(5, 3, s1);
-    TraveralList(strNode);
-    TraveralList(s1);
-    MergeList(strNode, s1, s2);
-    TraveralList(s2);
-    cout << GetList(s1,1) << endl;
-    cout << GetList(s1,2) << endl;
-    cout << GetList(s1,3) << endl;
-    return 0;
-}
-/*
-1
-100
-6
-0 2 8
-0 9 6
-0 0 7
-1 10
-1 6
-0 6 233
-
- */
