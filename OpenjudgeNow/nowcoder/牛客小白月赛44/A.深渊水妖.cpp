@@ -10,52 +10,45 @@
 // #define Debug
 
 using namespace std;
+#define int long long
 // using namespace __gnu_pbds;
 
-const int Maxn = 1e6 + 10;
+const int Maxn = 1e7 + 10;
 const ll Mod = 1e9 + 7;
-
 int t, n, m;
-// int ok[Maxn+10];
 
 void work()
 {
+    map<int, vector<pair<int, int>>> M;
     cin >> n;
-    vector<bool> ok(Maxn + 1);
+    vector<int> nums(n + 2, 0);
+    for (int i = 1; i <= n; i++)
+        cin >> nums[i];
+    int strPos = 1;
+    int maxVal = 0;
     for (int i = 1; i <= n; i++)
     {
-        int temp;
-        cin >> temp;
-        ok[temp] = true;
-    }
-    int ans = 0;
-    for (int i = 1; i <= Maxn; i++)
-    {
-        if (ok[i])
-            continue;
-        int cntNum = 0;
-        for (int j = i * 2; j <= Maxn; j += i)
+        if (nums[i] > nums[i + 1])
         {
-            if (!ok[j])
-                continue;
-            cntNum = __gcd(cntNum,j);
+            maxVal = max(maxVal, nums[i] - nums[strPos]);
+            M[nums[i] - nums[strPos]].push_back({strPos, i});
+            strPos = i + 1;
         }
-        if (cntNum == i)
-            ans++;
     }
-    cout << ans << endl;
+    for (auto it : M[maxVal])
+        cout << it.first << " " << it.second << " ";
+    cout << endl;
 }
 
 signed main()
 {
-    // cout << __gcd(0,123);
     Buff;
 #ifdef Debug
     freopen("temp.in", "r", stdin);
     freopen("temp.out", "w", stdout);
 #endif
-    // cin >> t;
-    // while (t--)
+    cin >> t;
+    while (t--)
         work();
     return 0;
 }

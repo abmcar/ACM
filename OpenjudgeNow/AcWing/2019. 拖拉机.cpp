@@ -1,75 +1,77 @@
-#include <iostream>
-#include <cstring>
-#include <algorithm>
-#include <deque>
+#include <bits/stdc++.h>
 
-#define x first
-#define y second
+#define Buff std::ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
+#define ll long long
+#define inf LONG_LONG_MAX
+#define Inf INT_MAX
+#define endl "\n"
+#define Endl "\n"
+#define String string
+// #define Debug
 
 using namespace std;
+// using namespace __gnu_pbds;
 
-typedef pair<int, int> PII;
-const int N = 1010;
+const int Maxn = 1e7 + 10;
+const ll Mod = 1e9 + 7;
 
-bool g[N][N], st[N][N];
-int dist[N][N];
+int n, strX, strY;
+int nx[] = {0, 1, 0, -1};
+int ny[] = {1, 0, -1, 0};
+vector<vector<int>> bd(2010, vector<int>(2010)), dis(2010, vector<int>(2010)), vis(2010, vector<int>(2010));
 
-int bfs(int sx, int sy)
+signed main()
 {
-    deque<PII> q;
-    q.push_back({sx, sy});
-    memset(dist, 0x3f, sizeof dist);
-    dist[sx][sy] = 0;
-
-    int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-
-    while (q.size())
+    Buff;
+#ifdef Debug
+    freopen("temp.in", "r", stdin);
+    freopen("temp.out", "w", stdout);
+#endif
+    cin >> n >> strX >> strY;
+    auto Fun_resize = [&](auto it) -> void
     {
-        auto t = q.front();
-        q.pop_front();
-
-        if (st[t.x][t.y])
+        it.resize(n + 10);
+    };
+    for (int i = 1; i <= n; i++)
+    {
+        int tx, ty;
+        cin >> tx >> ty;
+        bd[tx][ty] = 1;
+    }
+    deque<pair<int, int>> Q;
+    Q.push_back({strX, strY});
+    for (int i = 0; i <= 1010; i++)
+        for (int j = 0; j <= 1010; j++)
+            dis[i][j] = Maxn;
+    dis[strX][strY] = 0;
+    while (!Q.empty())
+    {
+        auto nowQ = Q.front();
+        int nowX = nowQ.first;
+        int nowY = nowQ.second;
+        Q.pop_front();
+        if (vis[nowX][nowY])
             continue;
-        st[t.x][t.y] = true;
-
-        if (!t.x && !t.y)
+        vis[nowX][nowY] = true;
+        if (nowX == nowY && nowX == 0)
             break;
-
         for (int i = 0; i < 4; i++)
         {
-            int x = t.x + dx[i], y = t.y + dy[i];
-            if (x >= 0 && x < N && y >= 0 && y < N)
+            int nextX = nowX + nx[i];
+            int nextY = nowY + ny[i];
+            if (nextX < 0 || nextY < 0 || nextX >= 1005 >> nextY >= 1005)
+                continue;
+            int addDis = bd[nextX][nextY];
+            if (dis[nextX][nextY] > dis[nowX][nowY] + addDis)
             {
-                int w = 0;
-                if (g[x][y])
-                    w = 1;
-                if (dist[x][y] > dist[t.x][t.y] + w)
-                {
-                    dist[x][y] = dist[t.x][t.y] + w;
-                    if (!w)
-                        q.push_front({x, y});
-                    else
-                        q.push_back({x, y});
-                }
+                dis[nextX][nextY] = dis[nowX][nowY] + addDis;
+                if (addDis)
+                    Q.push_back({nextX, nextY});
+                else
+                    Q.push_front({nextX, nextY});
             }
         }
     }
-
-    return dist[0][0];
-}
-
-int main()
-{
-    int n, sx, sy;
-    scanf("%d%d%d", &n, &sx, &sy);
-    while (n--)
-    {
-        int x, y;
-        scanf("%d%d", &x, &y);
-        g[x][y] = true;
-    }
-
-    printf("%d\n", bfs(sx, sy));
-
+    cout << dis[0][0] << endl;
     return 0;
 }

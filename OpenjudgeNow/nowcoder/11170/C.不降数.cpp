@@ -61,8 +61,6 @@ ll getC(ll r,ll n)
     for(ll i = 1; i <= n-r; i++)
         n3 = n3 * i % Mod;
     ans = (n1 * inverse(n2) % Mod * inverse(n3) % Mod) % Mod;
-    // cout << n << " " << r << endl;
-    // cout << n1 << " " << n2 << ' ' << n3 << endl;
     return ans;
 }
 
