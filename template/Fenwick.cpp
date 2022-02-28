@@ -55,12 +55,13 @@ signed main()
     freopen("temp.out", "w", stdout);
 #endif
     Fenwick<int> fen1(10);
-    Fenwick<double> fen2(10);
     fen1.modifty(1, 1);
+    int a = 5;
+    int b = 6;
+    a = 10;
+    b = 8;
     fen1.modifty(3, 3);
-    fen2.modifty(1, 2);
-    fen2.modifty(3, 2.2);
-    cout << fen1.get(3) << endl
-         << fen2.get(3) << endl;
+    fen1.modifty(4, -3);
+    cout << fen1.get(4)-fen1.get(3) << endl;
     return 0;
 }

@@ -46,9 +46,6 @@ ll quickPow(ll base, ll x)
 ll inverse(ll num)
 {
     return quickPow(num, Mod - 2) % Mod;
-    // if (num == 1)
-    //     return num;
-    // return inverse(Mod % num) * (Mod - Mod / num) % Mod;
 }
 
 void init()
