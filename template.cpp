@@ -1,29 +1,23 @@
 #include <bits/stdc++.h>
-
-#define Buff std::ios::sync_with_stdio(false), cin.tie(0), cout.tie(0)
-#define ll long long
-#define inf LONG_LONG_MAX
-#define Inf INT_MAX
-#define endl "\n"
-#define Endl "\n"
-#define String string
-#define tALL(v) v.begin(), v.end()
-#define _for(i, n) for (int i = 0; i < n; i++)
-#define _rof(i, n) for (int i = n; i >= 1; i--)
-// #define Debug
-
 using namespace std;
-// using namespace __gnu_pbds;
-
-const int Maxn = 1e7 + 10;
-const ll Mod = 1e9 + 7;
-
-signed main()
+struct Point
 {
-    Buff;
-#ifdef Debug
-    freopen("temp.in", "r", stdin);
-    freopen("temp.out", "w", stdout);
-#endif
-    return 0;
+    double x, y;
+};
+Point rotate(Point a, Point p, double angle)
+{
+    Point v = a ;
+    double c = cos(angle), s = sin(angle);
+    return Point{p.x + v.x * c - v.y * s, p.y + v.x * s + v.y * c};
+}
+int main()
+{
+    Point a;
+    cin >> a.x >> a.y;
+    Point p;
+    cin >> p.x >> p.y;
+    // double angle;
+    // cin >> angle;
+    Point b = rotate(a, p, 3.14);
+    cout << b.x << ' ' << b.y;
 }

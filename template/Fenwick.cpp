@@ -56,12 +56,6 @@ signed main()
 #endif
     Fenwick<int> fen1(10);
     fen1.modifty(1, 1);
-    int a = 5;
-    int b = 6;
-    a = 10;
-    b = 8;
-    fen1.modifty(3, 3);
-    fen1.modifty(4, -3);
-    cout << fen1.get(4)-fen1.get(3) << endl;
+    cout << fen1.get(4) << endl;
     return 0;
 }

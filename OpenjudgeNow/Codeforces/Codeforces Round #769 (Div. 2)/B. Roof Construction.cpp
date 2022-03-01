@@ -31,14 +31,6 @@ void work()
 
 signed main()
 {
-    // for (int i = 1; i <= 10; i++)
-    //     for (int j = 1; j <= 10; j++)
-    //         cout << i << " " << j << " " << (i xor j) << endl;
-    // vector<int> V = {2,3,4,5,1,6,7,0,8,9};
-    // vector<int> V = {4,6,3,2,0,8,9,1,7,5};
-    // for (int i = 0; i < V.size()-1; i++)
-    //     cout << (V[i] xor V[i+1]) << endl;
-    // Buff;
 #ifdef Debug
     freopen("temp.in", "r", stdin);
     freopen("temp.out", "w", stdout);
